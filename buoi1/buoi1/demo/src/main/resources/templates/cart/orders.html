@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách Đơn hàng</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+<section layout:fragment="content" class="container mt-5">
+    <h2 class="my-4">Danh sách đơn hàng của người dùng</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Tên Khách hàng</th>
+            <th>Địa chỉ</th>
+            <th>Email</th>
+            <th>Ghi chú</th>
+            <th>Phương thức thanh toán</th>
+            <th>Điện thoại</th>
+            <th>Chi Tiết</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.id}"></td>
+            <td th:text="${order.customerName}"></td>
+            <td th:text="${order.address}"></td>
+            <td th:text="${order.email}"></td>
+            <td th:text="${order.note}"></td>
+            <td th:text="${order.paymentMethod}"></td>
+            <td th:text="${order.phone}"></td>
+            <td><a class="btn btn-info" th:href="@{/order/list/{orderId}(orderId=${order.id})}">Xem chi tiết</a></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

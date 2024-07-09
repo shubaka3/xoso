@@ -1,0 +1,45 @@
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Chi tiết Đơn hàng</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body class="container">
+    <h2 class="my-4">Chi tiết Đơn hàng</h2>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Thông tin Khách hàng</h5>
+            <p class="card-text">ID: <span th:text="${order.id}"></span></p>
+            <p class="card-text">Số tài khoảng: <span th:text="${order.note}"></span></p>
+            <p class="card-text">Tên Khách hàng: <span th:text="${order.customerName}"></span></p>
+
+        </div>
+    </div>
+
+    <h3 class="mb-4">Món hàng đã mua:</h3>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="detail : ${orderDetails}">
+            <td th:text="${detail.product.name}"></td>
+            <td th:text="${detail.product.price}"></td>
+            <td th:text="${detail.quantity}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary mt-4" href="/order/list">Quay lại danh sách đơn hàng</a>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>

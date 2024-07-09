@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>Hello</title>
+</head>
+<body>
+<section layout:fragment="content" class="container mt-5"  style="
+    margin-bottom: 50px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* align-content: center; */
+">
+  <h1 class="mb-4">Số TRÚNG THƯỞNG </h1>
+  <!--    <table class="table table-bordered table-hover">-->
+  <!--        <thead class="table-dark">-->
+  <!--        <tr>-->
+  <!--            <th>ID</th>-->
+  <!--            <th>Name</th>-->
+
+  <!--        </tr>-->
+  <!--        </thead>-->
+  <!--        <tbody>-->
+  <!--        <tr th:each="number : ${numbers}">-->
+  <!--            <td th:text="${number.createdAt}"></td>-->
+  <!--            <td th:text="${number.valuenumber}"></td>-->
+
+  <!--        </tr>-->
+  <!--        </tbody>-->
+  <!--    </table>-->
+  <div th:each="number : ${numbers}" style="
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+">  <h1 style="font-size: 200px; color: green" th:text="${number.valuenumber}">?????</h1>
+
+    <!--        <h2  style="font-size: 100px; "th:text="${#temporals.format(number.createdAt, 'dd-MM-yyyy')}">2004-2-2</h2>-->
+    <h3  style="font-size: 50px; "th:text="${ 'Lần cuối cập nhật ' + #temporals.format(number.createdAt, 'dd-MM-yyyy-:-HH:mm:ss')}">2004-2-2</h3></div>
+</section>
+
+</body>
+</html>
